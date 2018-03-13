@@ -7,10 +7,11 @@ import {TodoListComponent} from './todo-list/todo-list.component';
 import {TodoAddComponent} from './todo-add/todo-add.component';
 import {TodoDeleteDirective} from './todo-delete.directive';
 import {TodoEditDirective} from './todo-edit.directive';
-import {KeysPipe} from '../common/enum-keys/keys.pipe';
+import {KeysPipe} from '../common/pipes/enum-keys/keys.pipe';
 import {TodoService} from './todo.service';
-import {FilterPipe} from '../common/filter/filter.pipe';
-import {SortByPipe} from '../common/sort-by/sort-by.pipe';
+import {FilterPipe} from '../common/pipes/filter/filter.pipe';
+import {SortByPipe} from '../common/pipes/sort-by/sort-by.pipe';
+import {SharedModule} from '../common/shared/shared.module';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
+    SharedModule,
     ReactiveFormsModule,
   ],
   exports: [TodoComponent],

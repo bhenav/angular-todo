@@ -5,6 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 
 import {AppComponent} from './app.component';
 import {TodoModule} from './todo/todo.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import {TodoModule} from './todo/todo.module';
     BrowserModule,
     AppRoutingModule,
     TodoModule,
+    TranslateModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
