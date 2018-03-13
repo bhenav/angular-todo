@@ -1,3 +1,16 @@
-<p>
-  todo-list works!
-</p>
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link" [ngClass]="{active: activeTab === item.key}" *ngFor="let item of types | keys" (click)="updateTab(item.key)">{{item.value}}</a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    <blockquote class="blockquote p-2" *ngFor="let item of list | filter: 'type': activeTab; let index = index; let count = count;" [ngClass]="{'border-bottom': index !== count - 1}">
+      <p class="mb-0">
+        {{item.title}}
+      </p>
+      <small class="text-muted">{{item.date | date}}</small>
+      <footer class="blockquote-footer">{{item.description}}</footer>
+    </blockquote>
+  </div>
+</div>
