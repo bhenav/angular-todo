@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
+import { AlwaysAuthGuardGuard } from './always-auth.guard';
 
 const routes: Routes = [
   {
@@ -8,13 +9,15 @@ const routes: Routes = [
     pathMatch: 'full',
   }, {
     path: 'todo',
-    loadChildren: './todo/todo.module#TodoModule'
+    loadChildren: './todo/todo.module#TodoModule',
+    canActivate: [AlwaysAuthGuardGuard],
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AlwaysAuthGuardGuard],
 })
 export class AppRoutingModule {
 }
