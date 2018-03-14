@@ -19,6 +19,8 @@ export class AppComponent {
         'Title': 'Başlık',
         'Description': 'Açıklama',
         'Add': 'Ekle',
+        'Edit': 'Düzenle',
+        'Delete': 'Sil',
         'to do': 'yapılacaklar',
       }});
     this.setTranslations(list);

@@ -1,4 +1,4 @@
-<form (submit)="saveTodo()" [formGroup]="form">
+<form (submit)="addTodo()" [formGroup]="form">
   <div class="form-group">
     <label for="type-select">{{'Select Type' | translate}}</label>
     <select class="form-control" formControlName="type-select" name="type-select" id="type-select" [(ngModel)]="todo.type" required>
@@ -13,6 +13,6 @@
     <label for="description">{{'Description' | translate}}</label>
     <textarea class="form-control" formControlName="description" name="description" id="description" rows="3" [(ngModel)]="todo.description" required></textarea>
   </div>
-  <button type="submit" class="btn btn-primary d-flex ml-auto" [disabled]="!form.valid">{{'Add' | translate}}</button>
+  <button type="submit" class="btn btn-primary d-flex ml-auto" [disabled]="!form.valid">{{todo.identifier ? ('Edit' | translate) : ('Add' | translate)}}</button>
 </form>
 

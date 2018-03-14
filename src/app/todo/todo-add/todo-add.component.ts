@@ -19,19 +19,19 @@ export class TodoAddComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.todo = new Todo();
     this.form = this.formBuilder.group({
       title: [null, Validators.required],
       description: [null, Validators.required],
       'type-select': [null, Validators.required],
     });
+
+    this.todoService.$todo.subscribe((todo: Todo) => {
+      this.todo = todo;
+    });
   }
 
-  saveTodo() {
+  addTodo() {
     this.todo.date = new Date();
-    const saved = this.todoService.saveTodo(this.todo);
-    if (saved) {
-      this.todo = new Todo();
-    }
+    this.todoService.addTodo(this.todo);
   }
 }

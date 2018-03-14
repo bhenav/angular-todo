@@ -17,7 +17,9 @@ export class TodoListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.list = this.todoService.list;
+    this.todoService.$list.subscribe((list: Array<Todo>) => {
+      this.list = list;
+    });
     this.activeTab = Object.keys(TodoTypesEnum)[0];
   }
 
