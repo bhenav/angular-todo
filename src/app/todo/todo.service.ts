@@ -4,8 +4,8 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class TodoService {
-  $list: BehaviorSubject<Array<Todo>> = new BehaviorSubject<Array<Todo>>([]);
-  $todo: BehaviorSubject<Todo> = new BehaviorSubject<Todo>(new Todo());
+  list$: BehaviorSubject<Array<Todo>> = new BehaviorSubject<Array<Todo>>([]);
+  todo$: BehaviorSubject<Todo> = new BehaviorSubject<Todo>(new Todo());
 
   get list(): Array<Todo> {
     return this._list;
@@ -19,7 +19,7 @@ export class TodoService {
 
   constructor() {
     this.list = this.getLocalStorage();
-    this.$list.next(this.list);
+    this.list$.next(this.list);
   }
 
 
@@ -37,8 +37,8 @@ export class TodoService {
       this.list.push(todo);
     }
     this.saveLocalStorage();
-    this.$list.next(this.list);
-    this.$todo.next(new Todo());
+    this.list$.next(this.list);
+    this.todo$.next(new Todo());
     return true;
   }
 
@@ -47,12 +47,12 @@ export class TodoService {
       return item.identifier !== todo.identifier;
     });
     this.saveLocalStorage();
-    this.$list.next(this.list);
+    this.list$.next(this.list);
     return true;
   }
 
   editTodo(todo: Todo) {
-    this.$todo.next(todo);
+    this.todo$.next(todo);
     return true;
   }
 

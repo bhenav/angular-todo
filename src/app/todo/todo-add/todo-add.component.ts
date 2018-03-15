@@ -25,7 +25,7 @@ export class TodoAddComponent implements OnInit {
       'type-select': [null, Validators.required],
     });
 
-    this.todoService.$todo.subscribe((todo: Todo) => {
+    this.todoService.todo$.subscribe((todo: Todo) => {
       this.todo = todo;
     });
   }
