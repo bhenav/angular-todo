@@ -1,6 +1,7 @@
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link" [ngClass]="{active: activeTab === item.key}" *ngFor="let item of types | keys" (click)="updateTab(item.key)">{{item.value}}</a>
+    <a class="nav-item nav-link" [ngClass]="{active: activeTab === item.key}" *ngFor="let item of types | keys"
+       (click)="updateTab(item.key)">{{item.value}}</a>
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
